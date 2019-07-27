@@ -21,3 +21,19 @@ class InstagramBot:
         password.send_keys(self.password)
         password.send_keys(Keys.RETURN)
         time.sleep(5)
+
+    def like_posts(self, hashtag):
+        driver = self.driver
+        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
+        time.sleep(5)
+        for i in range(0, 2):
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+            time.sleep(5)
+            posts = driver.find_elements_by_class_name("eLAPa")
+        for post in posts:
+            post.click()
+            time.sleep(2)
+            driver.find_element_by_class_name("fr66n").click()
+            time.sleep(2)
+            driver.find_element_by_class_name("ckWGn").click()
+            time.sleep(5)
